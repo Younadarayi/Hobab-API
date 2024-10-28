@@ -121,6 +121,7 @@ class ItemInfoResponse(BaseModel):
     name: str
     count: int
     quantity_id: int
+    quantity: QuantityInfoResponse
     categorie_id: int
 
 
