@@ -136,6 +136,7 @@ class TransactionAddRequest(BaseModel):
     amount: int
     transaction_time: datetime
     items_id: int
+    user_id: int
 
 
 class TransactionInfoResponse(BaseModel):
@@ -144,6 +145,9 @@ class TransactionInfoResponse(BaseModel):
     amount: int
     transaction_time: datetime
     items_id: int
+    user_id: int
+    user: UserInfoResponse
+    item: ItemInfoResponse
 
     class Config:
         from_attributes = True

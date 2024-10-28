@@ -17,6 +17,7 @@ class User(Base):
     type = relationship("UserType", back_populates="type_users")
 
     shifts = relationship("Shift", back_populates="user")
+    transactions = relationship("Transaction", back_populates="user")
 
 
 class UserType(Base):
@@ -36,8 +37,10 @@ class Transaction(Base):
     amount = Column(Integer)
     transaction_time = Column(DateTime)
     items_id = Column(Integer, ForeignKey("items.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
 
     item = relationship("Item", back_populates="transactions")
+    user = relationship("User", back_populates="transactions")
 
 
 class Alert(Base):
