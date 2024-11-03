@@ -104,7 +104,7 @@ class CategoryAddRequest(BaseModel):
 class CategoryInfoResponse(BaseModel):
     id: int
     name: str
-    sub_categorie: List[SubCategoryInfoResponse]
+    dom_categorie: List[SubCategoryInfoResponse]
 
 
 # item
