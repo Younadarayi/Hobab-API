@@ -154,6 +154,16 @@ class TransactionInfoResponse(BaseModel):
         from_attributes = True
 
 
+class TransactionItemResponse(BaseModel):
+    id: int
+    name: str
+    count: int
+    quantity_id: int
+    quantity: QuantityInfoResponse
+    categorie_id: int
+    transactions: List[TransactionInfoResponse]
+
+
 # ages
 class AgesAddRequest(BaseModel):
     start_age: int

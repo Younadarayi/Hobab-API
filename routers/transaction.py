@@ -120,3 +120,10 @@ def get_transactions_by_item_id(id: int, db: Session = Depends(util.get_db)):
         )
     else:
         return transactions
+
+
+@router.get("/all-with-item", response_model=List[schemas.TransactionItemResponse])
+def get_all_items(db: Session = Depends(util.get_db)):
+    items = db.query(model.Item).order_by(desc(model.Item.id)).all()
+
+    return items
