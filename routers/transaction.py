@@ -55,6 +55,13 @@ def create_transaction(
     return result
 
 
+@router.get("/items", response_model=List[schemas.TransactionItemResponse])
+def get_all_items_by_transaction(db: Session = Depends(util.get_db)):
+    items = db.query(model.Item).order_by(desc(model.Item.id)).all()
+
+    return items
+
+
 @router.get("/all", response_model=List[schemas.TransactionInfoResponse])
 def get_all_transactions(db: Session = Depends(util.get_db)):
     transactions = (
@@ -120,10 +127,3 @@ def get_transactions_by_item_id(id: int, db: Session = Depends(util.get_db)):
         )
     else:
         return transactions
-
-
-@router.get("/all-with-item", response_model=List[schemas.TransactionItemResponse])
-def get_all_items(db: Session = Depends(util.get_db)):
-    items = db.query(model.Item).order_by(desc(model.Item.id)).all()
-
-    return items
