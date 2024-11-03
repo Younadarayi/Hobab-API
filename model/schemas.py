@@ -136,6 +136,7 @@ class TransactionAddRequest(BaseModel):
     input: bool
     amount: int
     transaction_time: datetime
+    last_amount: int
     items_id: int
     user_id: int
 
@@ -145,6 +146,7 @@ class TransactionInfoResponse(BaseModel):
     input: bool
     amount: int
     transaction_time: datetime
+    last_amount: int
     items_id: int
     user_id: int
     user: UserInfoResponse

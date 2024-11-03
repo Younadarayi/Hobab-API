@@ -36,6 +36,7 @@ class Transaction(Base):
     input = Column(Boolean)
     amount = Column(Integer)
     transaction_time = Column(DateTime)
+    last_amount = Column(Integer)
     items_id = Column(Integer, ForeignKey("items.id"))
     user_id = Column(Integer, ForeignKey("users.id"))
 

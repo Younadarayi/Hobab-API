@@ -21,8 +21,11 @@ def create_transaction(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="the Item dose not exist"
         )
+    item_amount = item.count
     if request.input:
+
         item.count = item.count + request.amount
+
     else:
         if item.count < request.amount:
             raise HTTPException(
@@ -32,22 +35,26 @@ def create_transaction(
         item.count = item.count - request.amount
 
     db.commit()
+    db.refresh(item)
     # transaction:
-    new_item = model.Transaction(
+    new_transaction = model.Transaction(
         input=request.input,
         amount=request.amount,
         transaction_time=request.transaction_time,
         items_id=request.items_id,
         user_id=request.user_id,
+        last_amount=item_amount,
     )
 
-    db.add(new_item)
+    db.add(new_transaction)
     db.commit()
-    db.refresh(new_item)
-    result = new_item
-    if new_item.item.count < new_item.item.limit:
+    db.refresh(new_transaction)
+    result = new_transaction
+    if new_transaction.item.count < new_transaction.item.limit:
         new_alert = model.Alert(
-            seen=False, alert_time=new_item.transaction_time, item_id=new_item.items_id
+            seen=False,
+            alert_time=new_transaction.transaction_time,
+            item_id=new_transaction.items_id,
         )
         db.add(new_alert)
         db.commit()
