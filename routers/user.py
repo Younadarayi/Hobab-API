@@ -78,7 +78,7 @@ def get_all_active_users_in_time_zone(
         db.query(model.User)
         .filter(
             (model.User.end_work_time > start_time)
-            & (model.User.start_work_time < end_time)
+            | (model.User.start_work_time < end_time)
         )
         .all()
     )
