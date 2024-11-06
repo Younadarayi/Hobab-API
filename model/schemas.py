@@ -320,11 +320,11 @@ class CaviarInfoResponse(BaseModel):
     weight: int
     length: int
     time_of_birth: datetime
-    weight_class_id: WeightInfoResponse
-    length_class_id: LengthInfoResponse
-    ages_id: AgesInfoResponse
-    pool_id: PoolInfoResponse
-    caviar_breed_id: CaviarBreedInfoResponse
+    weight_class_id: int
+    length_class_id: int
+    ages_id: int
+    pool_id: int
+    caviar_breed_id: int
 
     class Config:
         from_attributes = True
