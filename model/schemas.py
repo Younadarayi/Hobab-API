@@ -128,7 +128,7 @@ class ItemInfoResponse(BaseModel):
 # alert
 class AlertInfoResponse(BaseModel):
     id: int
-    item_id: int
+    item: ItemInfoResponse
 
 
 # transaction
