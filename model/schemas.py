@@ -122,7 +122,7 @@ class ItemInfoResponse(BaseModel):
     count: int
     quantity_id: int
     quantity: QuantityInfoResponse
-    categorie_id: int
+    categorie: CategoryInfoBase
 
 
 # alert
