@@ -120,6 +120,7 @@ class ItemInfoResponse(BaseModel):
     id: int
     name: str
     count: int
+    limit: int
     quantity_id: int
     quantity: QuantityInfoResponse
     categorie: CategoryInfoBase
